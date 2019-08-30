@@ -1,0 +1,34 @@
+<h2>Flight Details</h2>
+
+<div>
+  <label>Airline Name:
+    <input #airlineName />
+  </label>
+  <br/>
+  <label>Flight Start:
+    <input #start />
+  </label>
+  <br/>
+  <label>Flight Destination:
+    <input #destination />
+  </label>
+</div>
+<br/>
+
+<button (click)="addFlight(airlineName.value, start.value, destination.value);">
+  Add Flight
+</button>
+
+<br/>
+<br/>
+<br/>
+
+<div>
+<ul class="flights">
+  <li *ngFor="let flight of flights">
+    <a routerLink="v1/flights/{{flight.airlineId}}">
+      <span class="badge">{{flight.airlineId}}</span> {{flight.airlineName}}
+    </a>
+  </li>
+</ul>
+</div>
