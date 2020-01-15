@@ -1,4 +1,5 @@
 export const environment = {
   production: false,
-  flightEndpoint: 'http://localhost:8080/v1/flights'
+  getFlightEndpoint: 'http://localhost:8080/v1/flights',
+  createFlightEndPoint: 'http://localhost:8080/v1/flights/create_flight'
 };

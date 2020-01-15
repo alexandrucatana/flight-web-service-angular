@@ -10,9 +10,9 @@ import {environment} from '../environments/environment';
 import createSpyObj = jasmine.createSpyObj;
 
 const mockFlights = [
-  { airlineId: '1', airlineName: 'GroovyAirline', start: 'Yaounde', destination: 'Libreville' },
-  { airlineId: '2', airlineName: 'RubyAirline', start: 'Brazzaville', destination: 'Kinshasa' },
-  { airlineId: '3', airlineName: 'RailAirline', start: 'Ouagadougou', destination: 'Accra' }
+  { id: '1', airlineName: 'GroovyAirline', start: 'Yaounde', destination: 'Libreville' },
+  { id: '2', airlineName: 'RubyAirline', start: 'Brazzaville', destination: 'Kinshasa' },
+  { id: '3', airlineName: 'RailAirline', start: 'Ouagadougou', destination: 'Accra' }
 ] as Flight[];
 const mockFlight = mockFlights[0];
 
@@ -55,12 +55,12 @@ describe('FlightService', () => {
 
   describe('getFlight', () => {
     it('should return a single mock flight', () => {
-      service.getFlight(mockFlight.airlineId).subscribe(
+      service.getFlight(mockFlight.id).subscribe(
         response => expect(response).toEqual(mockFlight),
         fail
       );
 
-      const req = httpTestingController.expectOne(`${environment.flightEndpoint}/${mockFlight.airlineId}`);
+      const req = httpTestingController.expectOne(`${environment.flightEndpoint}/${mockFlight.id}`);
       expect(req.request.method).toEqual('GET');
       req.flush(mockFlight);
     });

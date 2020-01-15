@@ -25,6 +25,7 @@ export class FlightsComponent implements OnInit {
     const newFlight = new Flight(name, start, destination);
     if (!newFlight) { return; }
     this.flightService.addFlight( newFlight)
-      .subscribe(() => this.flights.push(newFlight));
+      .subscribe(() => this.flights.push(newFlight))
+    ;
   }
 }

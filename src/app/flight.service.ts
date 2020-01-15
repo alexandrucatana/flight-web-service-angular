@@ -11,7 +11,8 @@ import {log} from 'util';
 })
 export class FlightService {
 
-  private baseUrl = environment.flightEndpoint;
+  private baseUrl = environment.getFlightEndpoint;
+  private createFlightUrl = environment.createFlightEndPoint;
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -31,6 +32,15 @@ export class FlightService {
 
   getAllFlights(): Observable<Flight[]> {
     console.log('Get stuff from ' + this.baseUrl );
+    const debugList =  this.http.get<Flight[]>(this.baseUrl);
+
+    debugList.subscribe(lists => {
+      lists.forEach(fli => {
+        console.log(fli.id + ' , ' + fli.airlineName);
+      })
+    })
+
+
     return this.http.get<Flight[]>(this.baseUrl);
   }
 
@@ -42,7 +52,7 @@ export class FlightService {
   }
 
   addFlight(flight: Flight): Observable<Flight> {
-    return this.http.post<Flight>(this.baseUrl, flight, this.httpOptions).pipe(
+    return this.http.post<Flight>(this.createFlightUrl, flight, this.httpOptions).pipe(
       catchError(this.handleError<Flight>('addFlight'))
     );
   }
