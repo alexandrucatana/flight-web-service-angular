@@ -4,7 +4,6 @@ import {Observable, of} from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import {environment} from '../environments/environment';
 import {Flight} from './Flight';
-import {log} from 'util';
 
 @Injectable({
   providedIn: 'root'
