@@ -52,7 +52,7 @@ export class FlightService {
   }
 
   addFlight(flight: Flight): Observable<Flight> {
-    return this.http.post<Flight>(this.createFlightUrl, flight, this.httpOptions).pipe(
+    return this.http.post<Flight>(`${this.baseUrl}/create_flight`, flight, this.httpOptions).pipe(
       catchError(this.handleError<Flight>('addFlight'))
     );
   }
