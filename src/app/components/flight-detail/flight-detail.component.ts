@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { FlightService } from '../flight.service';
-import {Flight} from '../Flight';
+import { FlightService } from '../../services/flight.service';
+import {Flight} from '../../models/Flight';
 
 @Component({
   selector: 'app-flight-detail',

@@ -1,6 +1,11 @@
-<h1>{{title}}</h1>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<nav>
-  <a routerLink="/flights">Flights</a>
-</nav>
+<mat-toolbar color="primary" class="fixed-header">
+  <mat-toolbar-row>
+    
+    <span class="menu-spacer"></span>
+    <div>
+      <a mat-button style="margin-right:5px" color="primary" [routerLink]="'/flights'"  routerLinkActive="active"> Current Flights </a>
+      <a mat-button style="margin-right:5px" color="primary" [routerLink]="'/addFlight'"  routerLinkActive="active"> Add New Flight </a>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
 <router-outlet></router-outlet>

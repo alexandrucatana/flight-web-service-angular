@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Flight } from '../Flight';
-import { FlightService} from '../flight.service';
+import { Flight } from '../../models/Flight';
+import { FlightService} from '../../services/flight.service';
 
 
 @Component({
@@ -19,13 +19,5 @@ export class FlightsComponent implements OnInit {
 
   getFlights(): void {
     this.flightService.getAllFlights().subscribe(flights => this.flights = flights);
-  }
-
-  addFlight(name: string, start: string, destination: string): void {
-    const newFlight = new Flight(name, start, destination);
-    if (!newFlight) { return; }
-    this.flightService.addFlight( newFlight)
-      .subscribe(() => this.flights.push(newFlight))
-    ;
   }
 }

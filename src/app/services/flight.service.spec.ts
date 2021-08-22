@@ -5,8 +5,8 @@ import { TestBed } from '@angular/core/testing';
 import { FlightService } from './flight.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {HttpClientModule} from '@angular/common/http';
-import {Flight} from './Flight';
-import {environment} from '../environments/environment';
+import {Flight} from '../models/Flight';
+import {environment} from '../../environments/environment';
 import createSpyObj = jasmine.createSpyObj;
 
 const mockFlights = [
