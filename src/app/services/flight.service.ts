@@ -30,17 +30,21 @@ export class FlightService {
   }
 
   getAllFlights(): Observable<Flight[]> {
-    console.log('Get stuff from ' + this.baseUrl );
-    const debugList =  this.http.get<Flight[]>(this.baseUrl);
+    const currentUrl = `${this.baseUrl}/getflights`;
+
+    /*
+    console.log('Get stuff from ' + currentUrl );
+    const debugList =  this.http.get<Flight[]>(currentUrl);
 
     debugList.subscribe(lists => {
       lists.forEach(fli => {
         console.log(fli.id + ' , ' + fli.airlineName);
       })
     })
+    */
 
 
-    return this.http.get<Flight[]>(this.baseUrl);
+    return this.http.get<Flight[]>(currentUrl);
   }
 
   getFlight(airlineId: string): Observable<Flight> {

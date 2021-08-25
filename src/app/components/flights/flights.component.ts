@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { Flight } from '../../models/Flight';
 import { FlightService} from '../../services/flight.service';
 
@@ -9,15 +10,21 @@ import { FlightService} from '../../services/flight.service';
   styleUrls: ['./flights.component.css']
 })
 export class FlightsComponent implements OnInit {
-  flights: Flight[];
+  displayedColumns: string[] = ['airlineName', 'start', 'destination'];
+  dataSource: MatTableDataSource<Flight>;
 
-  constructor(private flightService: FlightService) { }
+  constructor(private flightService: FlightService) { 
+    this.dataSource = new MatTableDataSource();
+  }
 
   ngOnInit() {
     this.getFlights();
   }
 
   getFlights(): void {
-    this.flightService.getAllFlights().subscribe(flights => this.flights = flights);
+    this.flightService.getAllFlights().subscribe(flights => {
+      console.log("Flights: ", flights);
+      this.dataSource.data = flights as Flight[];
+    });
   }
 }
